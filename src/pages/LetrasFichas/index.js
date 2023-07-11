@@ -16,7 +16,7 @@ export default function App() {
 
     console.log(i);
 
-    if(i < 1){
+    if(i < 36){
       console.log(x);
     
       await AsyncStorage.setItem('letra', x);
