@@ -9,6 +9,8 @@ import LetrasExemplos from './pages/LetrasExemplos';
 import AvaliacaoModulos from './pages/AvaliacaoModulos';
 import SilabasFichas from './pages/SilabasFichas';
 import SilabasExemplos from './pages/SilabasExemplos';
+import PalavrasFichas from './pages/PalavrasFichas';
+import PalavrasExemplos from './pages/PalavrasExemplos';
 import FrasesFichas from './pages/FrasesFichas';
 import FrasesExemplos from './pages/FrasesExemplos';
 import HistoriasFichas from './pages/HistoriasFichas';
@@ -24,7 +26,9 @@ export default function Rotas() { //Exporta para que possa ser "visto" no resto 
                 <AppStack.Screen        name="LetrasFichas"            component={LetrasFichas} />
                 <AppStack.Screen        name="LetrasExemplos"          component={LetrasExemplos} />
                 <AppStack.Screen        name="SilabasFichas"           component={SilabasFichas} />
-                <AppStack.Screen        name="SilabasExemplos"         component={SilabasExemplos} />                
+                <AppStack.Screen        name="SilabasExemplos"         component={SilabasExemplos} />     
+                <AppStack.Screen        name="PalavrasFichas"           component={PalavrasFichas} />
+                <AppStack.Screen        name="PalavrasExemplos"         component={PalavrasExemplos} />              
                 <AppStack.Screen        name="FrasesFichas"            component={FrasesFichas} />
                 <AppStack.Screen        name="FrasesExemplos"          component={FrasesExemplos} />   
                 <AppStack.Screen        name="HistoriasFichas"         component={HistoriasFichas} />

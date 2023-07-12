@@ -34,6 +34,11 @@ export default function App() {
       </TouchableOpacity>
 
       <TouchableOpacity
+        onPress = {() => navigation.replace("PalavrasFichas")}>
+        <Text>Palavras fichas</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
         onPress = {() => navigation.replace("FrasesFichas")}>
         <Text>Frases fichas</Text>
       </TouchableOpacity>
