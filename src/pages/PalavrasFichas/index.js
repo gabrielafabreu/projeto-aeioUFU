@@ -8,36 +8,62 @@ import { useState } from 'react';
 export default function App() {
   const navigation = useNavigation();
 
-  const [modalVisible, setModalVisible] = useState(false);
+  let letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  
+  const verificado = async() => {
+    let todasVisualizadas = true;
 
-  let i = 0;
+    for (let letra of letras) {
+
+      let progresso = await AsyncStorage.getItem(`progresso_palavra_${letra}`);
+
+      console.log("progresso: ", progresso);
+      
+      if (!progresso) {
+        todasVisualizadas = false;
+        break;
+      }
+    }
+        
+    if (todasVisualizadas) {
+      console.log("CHEGOU AQUI");
+      setModalVisible(true);
+    }
+  };
+
+  const [modalVisible, setModalVisible] = useState(false);
   
   const selecionaLetra = async(x) => {
+    console.log(x);
 
-    console.log(i);
-
-    if(i < 37){
-        console.log(x);
-        
-        await AsyncStorage.setItem('palavra', x);
+    if(verificado()){  
     
-        let keys;
-        keys = await AsyncStorage.getAllKeys();
-        const valores = await AsyncStorage.multiGet(keys);
-        console.log(valores);
-    
-        return navigation.navigate("PalavrasExemplos");
+      await AsyncStorage.setItem('letra', x);
+      await AsyncStorage.setItem(`progresso_palavra_${x}`, 'acessado');
 
+      let keys;
+      keys = await AsyncStorage.getAllKeys();
+      const valores = await AsyncStorage.multiGet(keys);
+      console.log(valores);
+
+      return navigation.navigate("PalavrasExemplos");
     }
+
     else{
-        setModalVisible(true);
+      console.log(verificado());
     }
+
+    let keys;
+    keys = await AsyncStorage.getAllKeys();
+    const valores = await AsyncStorage.multiGet(keys);
+    console.log(valores);
+    
   };
 
   
     const avaliar = async() => {
 
-        await AsyncStorage.setItem('nivel', "2");
+        await AsyncStorage.setItem('nivel', "3");
 
         let keys;
         keys = await AsyncStorage.getAllKeys();
@@ -86,7 +112,7 @@ export default function App() {
         {/* Letra: A */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("a")}
+            onPress = {() => selecionaLetra("a")}
             style = {styles.card}
             >
             
@@ -98,7 +124,7 @@ export default function App() {
         {/* Letra: B */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("b")}
+            onPress = {() => selecionaLetra("b")}
             style = {styles.card}
             >
             
@@ -111,7 +137,7 @@ export default function App() {
         {/* Letra: C */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("c")}
+            onPress = {() => selecionaLetra("c")}
             style = {styles.card}
             >
             
@@ -136,7 +162,7 @@ export default function App() {
         {/* Letra: D */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("d")}
+            onPress = {() => selecionaLetra("d")}
             style = {styles.card}
             >
             
@@ -148,7 +174,7 @@ export default function App() {
         {/* Letra: E */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("e")}
+            onPress = {() => selecionaLetra("e")}
             style = {styles.card}
             >
             
@@ -161,7 +187,7 @@ export default function App() {
         {/* Letra: F */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("f")}
+            onPress = {() => selecionaLetra("f")}
             style = {styles.card}
             >
             
@@ -186,7 +212,7 @@ export default function App() {
         {/* Letra: G */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("g")}
+            onPress = {() => selecionaLetra("g")}
             style = {styles.card}
             >
             
@@ -198,7 +224,7 @@ export default function App() {
         {/* Letra: H */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("h")}
+            onPress = {() => selecionaLetra("h")}
             style = {styles.card}
             >
             
@@ -211,7 +237,7 @@ export default function App() {
         {/* Letra: I */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("i")}
+            onPress = {() => selecionaLetra("i")}
             style = {styles.card}
             >
             
@@ -235,7 +261,7 @@ export default function App() {
         {/* Letra: J */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("j")}
+            onPress = {() => selecionaLetra("j")}
             style = {styles.card}
             >
             
@@ -247,7 +273,7 @@ export default function App() {
         {/* Letra: K */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("k")}
+            onPress = {() => selecionaLetra("k")}
             style = {styles.card}
             >
             
@@ -260,7 +286,7 @@ export default function App() {
         {/* Letra: L */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("l")}
+            onPress = {() => selecionaLetra("l")}
             style = {styles.card}
             >
             
@@ -285,7 +311,7 @@ export default function App() {
         {/* Letra: M */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("m")}
+            onPress = {() => selecionaLetra("m")}
             style = {styles.card}
             >
             
@@ -297,7 +323,7 @@ export default function App() {
         {/* Letra: N */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("n")}
+            onPress = {() => selecionaLetra("n")}
             style = {styles.card}
             >
             
@@ -310,7 +336,7 @@ export default function App() {
         {/* Letra: O */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("o")}
+            onPress = {() => selecionaLetra("o")}
             style = {styles.card}
             >
             
@@ -336,7 +362,7 @@ export default function App() {
         {/* Letra: P */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("p")}
+            onPress = {() => selecionaLetra("p")}
             style = {styles.card}
             >
             
@@ -348,7 +374,7 @@ export default function App() {
         {/* Letra: Q */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("q")}
+            onPress = {() => selecionaLetra("q")}
             style = {styles.card}
             >
             
@@ -361,7 +387,7 @@ export default function App() {
         {/* Letra: R */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("r")}
+            onPress = {() => selecionaLetra("r")}
             style = {styles.card}
             >
             
@@ -385,7 +411,7 @@ export default function App() {
         {/* Letra: S */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("s")}
+            onPress = {() => selecionaLetra("s")}
             style = {styles.card}
             >
             
@@ -397,7 +423,7 @@ export default function App() {
         {/* Letra: T */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("t")}
+            onPress = {() => selecionaLetra("t")}
             style = {styles.card}
             >
             
@@ -410,7 +436,7 @@ export default function App() {
         {/* Letra: U */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("u")}
+            onPress = {() => selecionaLetra("u")}
             style = {styles.card}
             >
             
@@ -436,7 +462,7 @@ export default function App() {
         {/* Letra: V */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("v")}
+            onPress = {() => selecionaLetra("v")}
             style = {styles.card}
             >
             
@@ -448,7 +474,7 @@ export default function App() {
         {/* Letra: W */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("w")}
+            onPress = {() => selecionaLetra("w")}
             style = {styles.card}
             >
             
@@ -461,7 +487,7 @@ export default function App() {
         {/* Letra: X */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("x")}
+            onPress = {() => selecionaLetra("x")}
             style = {styles.card}
             >
             
@@ -487,7 +513,7 @@ export default function App() {
         {/* Letra: Y */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("y")}
+            onPress = {() => selecionaLetra("y")}
             style = {styles.card}
             >
             
@@ -499,7 +525,7 @@ export default function App() {
         {/* Letra: Z */}
         <View>
           <TouchableOpacity 
-            onPress = {() => (i = i + 1) & selecionaLetra("z")}
+            onPress = {() => selecionaLetra("z")}
             style = {styles.card}
             >
             
@@ -541,7 +567,7 @@ export default function App() {
               style={{height: 150,width:150, marginTop: -60,}}
             />
 
-            <Text style={styles.tituloModal}>NÍVEL 2 CONCLUÍDO</Text>
+            <Text style={styles.tituloModal}>NÍVEL 3 CONCLUÍDO</Text>
 
             <TouchableOpacity 
                 style = {styles.botaoModal}
@@ -549,7 +575,6 @@ export default function App() {
                 <Text 
                     style={styles.confirmarModal}
                     onPress = {() => avaliar()}
-                    // onPress = {() => setModalVisible(!modalVisible) & trocaNivel(nivelAtual)}
                 >
                     FAZER AVALIAÇÃO  
                 </Text>
