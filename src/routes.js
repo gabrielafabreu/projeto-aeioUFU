@@ -6,6 +6,7 @@ import TelaInicial from './pages/TelaInicial';
 import SelecaoModulos from './pages/SelecaoModulos';
 import LetrasFichas from './pages/LetrasFichas';
 import LetrasExemplos from './pages/LetrasExemplos';
+import AvaliacaoDiagnostica from './pages/AvaliacaoDiagnostica';
 import AvaliacaoModulos from './pages/AvaliacaoModulos';
 import SilabasFichas from './pages/SilabasFichas';
 import SilabasExemplos from './pages/SilabasExemplos';
@@ -20,7 +21,8 @@ export default function Rotas() { //Exporta para que possa ser "visto" no resto 
     return (
         <NavigationContainer>
             <AppStack.Navigator screenOptions={{ headerShown: false }}>
-
+          
+                <AppStack.Screen        name="AvaliacaoDiagnostica"        component={AvaliacaoDiagnostica} />   
                 <AppStack.Screen        name="TelaInicial"             component={TelaInicial} />
                 <AppStack.Screen        name="SelecaoModulos"          component={SelecaoModulos} />
                 <AppStack.Screen        name="LetrasFichas"            component={LetrasFichas} />
@@ -32,7 +34,7 @@ export default function Rotas() { //Exporta para que possa ser "visto" no resto 
                 <AppStack.Screen        name="FrasesFichas"            component={FrasesFichas} />
                 <AppStack.Screen        name="FrasesExemplos"          component={FrasesExemplos} />   
                 <AppStack.Screen        name="HistoriasFichas"         component={HistoriasFichas} />
-                <AppStack.Screen        name="HistoriasExemplos"       component={HistoriasExemplos} />                   
+                <AppStack.Screen        name="HistoriasExemplos"       component={HistoriasExemplos} />                        
                 <AppStack.Screen        name="AvaliacaoModulos"        component={AvaliacaoModulos} />
 
             </AppStack.Navigator>
