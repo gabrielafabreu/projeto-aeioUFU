@@ -13,7 +13,7 @@ As categorias do aplicativo incluem:
 - **Texto**: Compreensão e interpretação de textos.
 
 ### Demonstração
-Veja a demonstração do aplicativo em funcionamento:
+Demonstração do aplicativo em funcionamento:
 [Assista à demonstração do aeioUFU](https://youtu.be/thPjAQSnoxY)
 
 Criado por: Gabriela Abreu e Laura Crosara
